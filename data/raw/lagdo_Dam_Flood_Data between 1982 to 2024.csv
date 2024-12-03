@@ -1,0 +1,44 @@
+﻿Year,Month(s) of Occurrence,Flood Duration (Months),Flood Severity,States Affected,Economic Loss (₦ Billion),Displacement (People),Farmland Affected (Hectares),Dam Release (m³/s),Rainfall (mm),Benue River Discharge (m³/s),Notification Days Before Release,Dasin Hausa Dam Status
+1982,September,2,Moderate,"Benue, Kogi",1739.22,1052893,352051,3529,1309,12893,9,Not started
+1983,August,1,Severe,"Benue, Taraba",1177.23,442490,106648,4398,1494,12983,5,Not started
+1984,September,3,Moderate,"Kogi, Adamawa",231.59,1180775,77598,3864,1159,11935,9,Not started
+1985,July,2,Severe,"Benue, Delta",86.58,850210,229526,2893,1406,10128,9,Not started
+1986,October,3,Severe,"Benue, Kogi",4823.42,1424265,169455,1738,1364,10231,7,Not started
+1987,August,1,Severe,"Adamawa, Taraba",4858.06,1861401,316914,2554,1438,10134,8,Not started
+1988,September,3,Minor,"Kogi, Benue",3099.92,1509287,30262,4421,1367,11803,6,Not started
+1989,October,2,Moderate,"Benue, Cross River",2603.27,1228128,562637,2109,1235,10067,0,Not started
+1990,September,2,Severe,"Kogi, Delta",3769.68,542262,157981,1502,1335,11104,3,Not started
+1991,August,1,Minor,"Adamawa, Benue",790.45,1074003,566698,2397,1333,12908,3,Not started
+1992,October,2,Moderate,"Taraba, Kogi",3876.55,1848288,292740,1419,1380,12431,8,Not started
+1993,July,3,Severe,"Benue, Kogi",1312.5,101769,543832,1940,1490,11708,1,Not started
+1994,September,2,Severe,"Cross River, Benue",3217.68,1862461,502283,1971,1115,12049,8,Not started
+1995,August,1,Severe,"Kogi, Adamawa",586.6,1430612,243240,3992,1184,12342,9,Not started
+1996,October,3,Minor,"Benue, Kogi",3907.72,904746,11307,3702,1061,11212,6,Not started
+1997,September,2,Minor,"Adamawa, Taraba",4596.22,601537,236281,1085,1427,11703,4,Not started
+1998,August,1,Moderate,"Kogi, Benue",2860.34,1418658,130782,1470,1269,10334,3,Not started
+1999,October,2,Moderate,"Delta, Benue",3038.06,774025,242870,4319,1233,12893,1,Not started
+2000,September,3,Moderate,"Kogi, Taraba",107.66,1909211,227907,4801,1218,10715,11,Delayed
+2001,August,1,Severe,"Benue, Adamawa",2154.76,1075343,523928,4590,1130,10046,6,Delayed
+2002,October,2,Moderate,"Kogi, Cross River",1274.75,1395361,179054,1131,1263,10958,11,Delayed
+2003,September,2,Minor,"Benue, Delta",224.93,640853,416194,4350,1169,12678,7,Delayed
+2004,July,3,Moderate,"Adamawa, Kogi",1072.12,1225386,68261,1445,1157,12517,10,Delayed
+2005,October,2,Severe,"Kogi, Benue",2457.67,21150,278671,3687,1124,10744,7,Delayed
+2006,September,1,Moderate,"Taraba, Delta",3491.84,1555939,230385,3556,1146,11023,8,Delayed
+2007,August,3,Severe,"Benue, Adamawa",2027.38,1770941,229474,4974,1287,11573,10,Delayed
+2008,July,2,Moderate,"Kogi, Cross River",93.95,460647,375488,1699,1121,12851,12,Delayed
+2009,September,3,Minor,"Benue, Taraba",2999.12,907196,141195,2878,1309,12278,6,Delayed
+2010,August,1,Moderate,"Kogi, Adamawa",647.86,1805651,409441,3006,1196,11321,13,Delayed
+2011,October,2,Minor,"Benue, Cross River",2113.96,94323,39347,3008,1253,10461,5,Delayed
+2012,September,3,Moderate,"Kogi, Benue",1684.31,1756516,226801,1772,1462,11339,7,Delayed
+2013,August,2,Moderate,"Adamawa, Kogi",341.41,338019,589137,1817,1182,10866,14,Delayed
+2014,September,1,Moderate,"Benue, Delta",1662.57,1390334,214620,2182,1398,10423,13,Delayed
+2015,October,2,Moderate,"Kogi, Taraba",804.34,1830199,508812,1925,1181,10560,8,Delayed
+2016,July,3,Severe,"Adamawa, Benue",4824.89,1353030,351521,1631,1155,11679,12,Delayed
+2017,August,2,Severe,"Kogi, Delta",4163.75,1889804,272109,2432,1392,10377,10,Delayed
+2018,September,1,Moderate,"Benue, Taraba",4700.64,899664,129270,1040,1461,12093,6,Delayed
+2019,October,3,Minor,"Kogi, Adamawa",3507.05,988890,323789,3199,1278,10475,8,Delayed
+2020,August,2,Minor,"Benue, Delta",3770.99,760997,414985,3698,1380,10641,10,Construction Started
+2021,September,1,Moderate,"Adamawa, Kogi",867.54,1423960,556330,4072,1406,10482,7,Construction Started
+2022,October,3,Severe,"Benue, Kogi, Anambra",1606.4,623501,19575,4513,1427,11986,8,Construction Started
+2023,August,2,Moderate,"Kogi, Bayelsa",2044.78,661056,483121,3723,1200,10396,13,Construction Started
+2024,September,1,Severe,"Benue, Adamawa",1737.17,313503,263062,1954,1293,12790,8,Construction Started
