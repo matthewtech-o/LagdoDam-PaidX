@@ -4,6 +4,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import FunctionTransformer
 
 def load_data(file_paths):
     """Loads multiple CSV files into a dictionary of DataFrames."""
@@ -85,8 +87,9 @@ def preprocess_data(data, output_file=None):
     data['month'] = data['datetime'].dt.month
     data['day'] = data['datetime'].dt.day
     
-    # Drop columns that aren't useful for the model (e.g., 'datetime')
-    data.drop(columns=['datetime'], inplace=True)  # Drop the datetime column
+    # Drop columns that aren't useful for the model (e.g., 'datetime', 'Flood Severity', 'States Affected')
+    columns_to_drop = ['datetime', 'Flood Severity', 'affected_regions', 'State']
+    data.drop(columns=[col for col in columns_to_drop if col in data.columns], inplace=True)  # Drop only if columns exist
     
     # Optionally save the preprocessed data
     if output_file:
@@ -94,6 +97,7 @@ def preprocess_data(data, output_file=None):
         print(f"Preprocessed data saved to {output_file}")
     
     return data
+
 
 def split_data(data, target_columns):
     """Splits the data into train and test sets for multiple target variables."""
@@ -116,21 +120,53 @@ def split_data(data, target_columns):
 def scale_features(X_train, X_test):
     """Scales the features using StandardScaler and encodes categorical columns."""
     
-    # Identify categorical columns (you may need to add more categorical columns here)
-    categorical_columns = ['State', 'affected_regions']  # Update with your categorical columns
+    # Define the categorical columns with custom mappings
+    custom_mappings = {
+        "Flood Severity": {"No flood": 0, "Moderate": 1, "Severe": 2, "Minor": 3},
+        "Dasin Hausa Dam Status": {"Not started": 0, "Delayed": 1, "Construction Started": 2},
+        "Month(s) of Occurrence": {"July": 1, "August": 2, "September": 3, "October": 4},
+        "States Affected": {
+            'Benue': 1,
+            'Kogi': 2,
+            'Adamawa': 3,
+            'Taraba': 4,
+            'Delta': 5,
+            'Cross River': 6,
+            'Anambra': 7,
+            'Bayelsa': 8
+        }
+    }
+
+    # Identify categorical columns
+    categorical_columns = ['flood_severity', 'Dasin Hausa Dam Status', 'Month(s) of Occurrence', 'States Affected']
     
-    # Separate categorical columns and numerical columns
-    numerical_columns = X_train.select_dtypes(include=['int64', 'float64']).columns
+    # Separate numerical columns
+    numerical_columns = X_train.select_dtypes(include=['int64', 'float64']).columns.tolist()
+    
+    # Ensure categorical columns exist in the dataset before applying transformations
     categorical_columns = [col for col in categorical_columns if col in X_train.columns]
 
-    # Create a Column Transformer to apply OneHotEncoder to categorical columns
+    # Custom transformer function to map categorical columns to their specified values
+    def map_categorical_values(df):
+        for col, mapping in custom_mappings.items():
+            if col in df.columns:
+                # Set categories first, to allow 'Unknown'
+                df[col] = df[col].astype('category').cat.add_categories(['Unknown'])
+                # Fill NaN with 'Unknown' and then apply the mapping
+                df[col] = df[col].fillna('Unknown').map(mapping).astype(int, errors='ignore')  # Handle NaN values safely
+        return df
+
+    # Create a ColumnTransformer with custom mappings for categorical features and standard scaling for numerical features
     preprocessor = ColumnTransformer(
         transformers=[
             ('num', StandardScaler(), numerical_columns),
-            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_columns)  # handle unseen categories
+            ('cat', Pipeline(steps=[
+                ('mapper', FunctionTransformer(map_categorical_values)),  # Apply the custom mapping
+                ('imputer', SimpleImputer(strategy='most_frequent'))  # Handle any missing values in categorical columns
+            ]), categorical_columns)
         ])
 
-    # Create a pipeline with preprocessor
+    # Create a pipeline
     pipeline = Pipeline(steps=[('preprocessor', preprocessor)])
 
     # Fit and transform the train data
