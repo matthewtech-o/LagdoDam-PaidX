@@ -85,6 +85,10 @@ def make_prediction(input_data: PredictionInput, model, target: str):
         raise HTTPException(status_code=500, detail=f"Error in {target} prediction: {e}")
     return {target: prediction[0]}
 
+@app.get("/")
+def welcome():
+    return {"message":"Welcome to the Flood Prediction API!
+
 @app.post("/predict/flood_severity")
 def predict_flood_severity(input_data: PredictionInput):
     return make_prediction(input_data, severity_model, "flood_severity")
