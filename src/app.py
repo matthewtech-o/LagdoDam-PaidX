@@ -6,9 +6,9 @@ import pandas as pd
 app = FastAPI()
 
 # Load the pre-trained models
-severity_model = joblib.load('LagdoDam-PaidX/models/flood_severity_model.pkl') 
-impact_model = joblib.load('LagdoDam-PaidX/models/economic_impact_model.pkl') 
-water_model = joblib.load('LagdoDam-PaidX/models/water_level_model.pkl') 
+severity_model = joblib.load('models/flood_severity_model.pkl') 
+impact_model = joblib.load('models/economic_impact_model.pkl') 
+water_model = joblib.load('models/water_level_model.pkl') 
 
 # Define the request schema with the updated input features
 class PredictionInput(BaseModel):
