@@ -87,7 +87,7 @@ def make_prediction(input_data: PredictionInput, model, target: str):
 
 @app.get("/")
 def welcome():
-    return {"message":"Welcome to the Flood Prediction API!
+    return {"message":"Welcome to the Flood Prediction API!"}
 
 @app.post("/predict/flood_severity")
 def predict_flood_severity(input_data: PredictionInput):
