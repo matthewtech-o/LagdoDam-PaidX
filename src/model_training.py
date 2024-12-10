@@ -31,7 +31,7 @@ def train_flood_severity_model(X_train, y_train):
     
     return model
 
-# Rest of the functions remain the same as in your original code
+
 def print_feature_importance(model, top_n=10):
     """Print feature importances for the model."""
     if hasattr(model, 'feature_importances_dict'):
