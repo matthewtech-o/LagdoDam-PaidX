@@ -3,8 +3,7 @@ import requests
 from datetime import datetime
 
 # Set up the FastAPI endpoint URL
-BASE_URL = "http://127.0.0.1:8001"  # Replace with your server's actual URL if deployed
-
+BASE_URL = "https://27f9-2c0f-2a80-1d-5010-d010-44a9-7720-d16b.ngrok.io" 
 st.title("Flood Prediction System")
 st.write(
     """
