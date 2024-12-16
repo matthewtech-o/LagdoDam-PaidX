@@ -1,7 +1,9 @@
 import xgboost as xgb
+from sklearn.model_selection import cross_val_score, KFold
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.metrics import accuracy_score, mean_absolute_error
+from sklearn.metrics import accuracy_score, mean_absolute_error, make_scorer
 import numpy as np
+import pandas as pd
 
 def train_flood_severity_model(X_train, y_train):
     """Train a Random Forest model for flood severity prediction."""
@@ -30,6 +32,17 @@ def train_flood_severity_model(X_train, y_train):
     model.feature_importances_dict = dict(zip(feature_names, feature_importances))
     
     return model
+
+
+def cross_validate_classification_model(X, y):
+    """Perform k-fold cross-validation for classification model."""
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    cv_scores = cross_val_score(model, X, y, cv=kf, scoring='accuracy')
+    
+    print("Cross-Validation Accuracy Scores:", cv_scores)
+    print(f"Mean Accuracy: {np.mean(cv_scores):.4f}")
+    print(f"Standard Deviation: {np.std(cv_scores):.4f}")
 
 
 def print_feature_importance(model, top_n=10):
@@ -78,6 +91,18 @@ def evaluate_classification_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {accuracy * 100:.2f}%")
+
+
+def cross_validate_regression_model(X, y):
+    """Perform k-fold cross-validation for regression model."""
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    mae_scorer = make_scorer(mean_absolute_error, greater_is_better=False)  # Negative MAE
+    
+    cv_scores = cross_val_score(model, X, y, cv=kf, scoring=mae_scorer)
+    print("Cross-Validation MAE Scores:", -cv_scores)  # Convert back to positive
+    print(f"Mean MAE: {-np.mean(cv_scores):.4f}")
+    print(f"Standard Deviation: {np.std(-cv_scores):.4f}")
 
 def evaluate_regression_model(model, X_test, y_test):
     """Evaluate regression model performance."""
