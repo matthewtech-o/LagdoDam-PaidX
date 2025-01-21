@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import joblib
 from datetime import datetime
 import pandas as pd
-from feature_engineering import generate_features
+from src.feature_engineering import generate_features
 
 
 app = FastAPI()
