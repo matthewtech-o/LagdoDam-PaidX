@@ -3,7 +3,7 @@ import requests
 from datetime import datetime
 
 # Set up the FastAPI endpoint URL
-BASE_URL = "http://127.0.0.1:8002"
+BASE_URL = "https://lagdodam-paidx.fly.dev/"
 
 st.title("Flood Prediction System")
 st.write(
